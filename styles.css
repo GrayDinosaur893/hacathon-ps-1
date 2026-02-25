@@ -1643,18 +1643,117 @@ img {
     flex-direction: column;
   }
 }
-.report-card {
-  padding: 32px;
-  margin-top: 24px;
+.lang-select {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border2);
+  background: var(--surface2);
+  color: var(--text);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
-.report-card h3 {
-  margin-top: 24px;
+.lang-select:hover {
+  border-color: var(--primary);
 }
 
-.report-assurance {
-  margin-top: 32px;
-  padding: 20px;
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 12px;
+
+/* ========== DEMO VIDEO STYLES ========== */
+#demo-modal .modal-content {
+  max-width: 960px;
+  overflow: visible;
+}
+
+/* Ensure the close button appears above the video iframe */
+#demo-modal .modal-close {
+  top: 12px;
+  right: 12px;
+  z-index: 9999;
+  background: rgba(0,0,0,0.35);
+  color: #fff;
+}
+
+#demo-modal .modal-body .video-wrap {
+  position: relative;
+  padding-top: 56.25%; /* 16:9 aspect */
+}
+#demo-modal .modal-body .video-wrap iframe,
+#demo-modal .modal-body .video-wrap video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  z-index: 1;
+}
+
+/* spinner shown while iframe is loading */
+#demo-modal .video-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 4px solid rgba(255,255,255,0.12);
+  border-top-color: var(--primary);
+  animation: demo-spin 1s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes demo-spin {
+  to { transform: translate(-50%,-50%) rotate(360deg); }
+}
+/* ========== DEMO VIDEO STYLES ========== */
+#demo-modal .modal-content {
+  max-width: 960px;
+  overflow: visible;
+}
+
+/* Ensure the close button appears above the video iframe */
+#demo-modal .modal-close {
+  top: 12px;
+  right: 12px;
+  z-index: 9999;
+  background: rgba(0,0,0,0.35);
+  color: #fff;
+}
+
+#demo-modal .modal-body .video-wrap {
+  position: relative;
+  padding-top: 56.25%; /* 16:9 aspect */
+}
+#demo-modal .modal-body .video-wrap iframe,
+#demo-modal .modal-body .video-wrap video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  z-index: 1;
+}
+
+/* spinner shown while iframe is loading */
+#demo-modal .video-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 4px solid rgba(255,255,255,0.12);
+  border-top-color: var(--primary);
+  animation: demo-spin 1s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes demo-spin {
+  to { transform: translate(-50%,-50%) rotate(360deg); }
 }

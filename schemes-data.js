@@ -1795,7 +1795,6 @@ const SCHEMES_DB = [
   beneficiaries: "9 Cr+",
   potentialBenefit: 1600
 },
-
 ];
 
 

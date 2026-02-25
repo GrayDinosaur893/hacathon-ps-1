@@ -1,7 +1,7 @@
 // ============================================
 // GovScheme AI — Main Application Logic
 // ============================================
-
+let currentLang = "en";
 (function () {
   "use strict";
 
@@ -33,6 +33,9 @@
   const modal = $("#scheme-modal");
   const modalBody = $("#modal-body");
   const modalClose = $("#modal-close");
+  const demoModal = $("#demo-modal");
+  const demoModalBody = $("#demo-modal-body");
+  const demoModalClose = $("#demo-modal-close")
   const reAnalyzeBtn = $("#re-analyze-btn");
   const aiChat = $("#ai-chat");
   const scrollIndicator = $("#scroll-indicator");
@@ -63,6 +66,7 @@ if (schemesNavBtn) {
     showAllSchemes();
   });
 }
+    // demo button handled below (open in modal)
 
   // ---- CURSOR GLOW ----
   document.addEventListener("mousemove", (e) => {
@@ -97,9 +101,16 @@ if (schemesNavBtn) {
   heroCta.addEventListener("click", () => {
     document.getElementById("form-section").scrollIntoView({ behavior: "smooth" });
   });
-  heroDemo.addEventListener("click", () => {
-    document.getElementById("form-section").scrollIntoView({ behavior: "smooth" });
-  });
+  // Open demo modal when demo button clicked
+  if (heroDemo) {
+    heroDemo.addEventListener("click", () => {
+      const url = heroDemo.dataset.video || heroDemo.getAttribute("data-video");
+      if (url) openDemoModal(url);
+    });
+  }
+
+  // Wire demo modal close button
+  if (demoModalClose) demoModalClose.addEventListener("click", closeDemoModal);
 
   // ---- HERO COUNTER ANIMATION ----
   function animateCounters() {
@@ -274,11 +285,15 @@ if (schemesNavBtn) {
     if (e.income) {
       maxScore += 25;
 
-      if (e.income.includes(profile.income)) {
+     if (profile.income === "No Income") {
+        // Treat no income as lowest income bracket
+        if (e.income.includes("below-1l")) {
+          score += 25;
+        }
+       } 
+       else if (e.income.includes(profile.income)) {
         score += 25;
-      } else {
-        return null; // ❌ Reject if income mismatch
-      }
+     }
     }
 
     // ---- AGE ----
@@ -534,7 +549,7 @@ if (schemesNavBtn) {
 
   modalClose.addEventListener("click", closeModal);
   modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
-  document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") { closeModal(); closeDemoModal(); } });
 
   function closeModal() {
     modal.classList.add("hidden");
@@ -548,6 +563,69 @@ if (schemesNavBtn) {
       `This scheme provides ${scheme.benefits[0].toLowerCase()}. Given your current profile, ${scheme.confidence >= 60 ? "you have a good chance of qualifying" : "some criteria may need verification"}.`,
     ];
     return recs[scheme.id % recs.length];
+  }
+  function openDemoModal(url) {
+    if (!demoModalBody || !demoModal) return;
+    // Build a robust iframe src with recommended params for smooth autoplay/playback
+    function buildSrc(u) {
+      try {
+        const parsed = new URL(u);
+        const base = parsed.origin + parsed.pathname;
+        const params = new URLSearchParams(parsed.search);
+        params.set("autoplay", "1");
+        params.set("mute", "1");
+        params.set("playsinline", "1");
+        params.set("rel", "0");
+        params.set("controls", "1");
+        params.set("modestbranding", "1");
+        params.set("enablejsapi", "1");
+        return `${base}?${params.toString()}`;
+      } catch (e) {
+        const sep = u.includes("?") ? "&" : "?";
+        return `${u}${sep}autoplay=1&mute=1&playsinline=1&rel=0&controls=1&modestbranding=1&enablejsapi=1`;
+      }
+    }
+
+    const src = buildSrc(url);
+
+    demoModalBody.innerHTML = `
+      <div class="video-wrap">
+        <div class="video-spinner" aria-hidden="true"></div>
+        <iframe src="${src}" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen loading="eager"></iframe>
+      </div>
+    `;
+
+    const iframe = demoModalBody.querySelector("iframe");
+    const spinner = demoModalBody.querySelector(".video-spinner");
+
+    // Remove spinner when iframe loads (or after a short timeout fallback)
+    if (iframe) {
+      iframe.addEventListener(
+        "load",
+        () => {
+          if (spinner) {
+            spinner.style.opacity = "0";
+            setTimeout(() => spinner.remove(), 300);
+          }
+        },
+        { once: true }
+      );
+      setTimeout(() => {
+        if (spinner && spinner.parentNode) spinner.parentNode.removeChild(spinner);
+      }, 6000);
+    }
+
+    demoModal.classList.remove("hidden");
+    demoModal.setAttribute('aria-hidden','false');
+    body.style.overflow = "hidden";
+  }
+
+  function closeDemoModal() {
+    if (!demoModal) return;
+    demoModal.classList.add("hidden");
+    demoModal.setAttribute('aria-hidden','true');
+    if (demoModalBody) demoModalBody.innerHTML = '';
+    body.style.overflow = "";
   }
 
   // ---- ANALYTICS ----
@@ -750,3 +828,102 @@ if (dobInput) {
   // ---- INIT ----
   document.getElementById("footer").style.display = "none";
 })();
+
+document
+  .getElementById("language-select")
+  .addEventListener("change", (e) => {
+    currentLang = e.target.value;
+
+    applyTranslations(currentLang);
+
+    localStorage.setItem("lang", currentLang);
+  });
+ window.addEventListener("DOMContentLoaded", () => {
+  const savedLang =
+    localStorage.getItem("lang") || "en";
+
+  applyTranslations(savedLang);
+
+  const langSelect =
+    document.getElementById("language-select");
+
+  if (langSelect) {
+    langSelect.value = savedLang;
+
+    langSelect.addEventListener("change", (e) => {
+      currentLang = e.target.value;
+
+      applyTranslations(currentLang);
+
+      localStorage.setItem("lang", currentLang);
+    });
+  }
+});
+function applyTranslations(lang) {
+  const t = TRANSLATIONS[lang];
+  if (!t) return;
+
+  const setText = (id, text) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = text;
+  };
+ setText("hero-title", t.heroTitle);
+ setText("btn-find-schemes", t.findSchemes);
+ setText("btn-watch-demo", t.watchDemo);
+ setText("hero-subtitle", t.heroSubtitle);
+ setText("step1-title", t.step1Title);
+ setText("step2-title", t.step2Title);
+ setText("step3-title", t.step3Title);
+
+ setText("form-title", t.formTitle);
+ setText("form-subtitle", t.formSubtitle);
+
+  setText("hero-title", t.heroTitle);
+  setText("hero-subtitle", t.heroSubtitle);
+  setText("label-fullName", t.fullName);
+  setText("label-gender", t.gender);
+  setText("label-state", t.state);
+  setText("label-occupation", t.occupation);
+  setText("label-income", t.income);
+  setText("btn-next", t.nextStep);
+  setText("label-education", t.education);
+setText("opt-education-default", t.selectEducation);
+
+setText("label-area", t.area);
+setText("opt-area-default", t.selectArea);
+
+setText("label-interests", t.interests);
+
+setText("int-education", t.intEducation);
+setText("int-healthcare", t.intHealthcare);
+setText("int-housing", t.intHousing);
+setText("int-agriculture", t.intAgriculture);
+setText("int-business", t.intBusiness);
+setText("int-women", t.intWomen);
+setText("int-skill", t.intSkill);
+setText("int-pension", t.intPension);
+
+setText("btn-previous", t.previous);
+setText("btn-submit", t.submit);
+}
+window.addEventListener("DOMContentLoaded", () => {
+  const savedLang =
+    localStorage.getItem("lang") || "en";
+
+  applyTranslations(savedLang);
+
+  const langSelect =
+    document.getElementById("language-select");
+
+  if (langSelect) {
+    langSelect.value = savedLang;
+
+    langSelect.addEventListener("change", (e) => {
+      const lang = e.target.value;
+
+      applyTranslations(lang);
+
+      localStorage.setItem("lang", lang);
+    });
+  }
+});
