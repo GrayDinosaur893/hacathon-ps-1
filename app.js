@@ -867,44 +867,77 @@ function applyTranslations(lang) {
     const el = document.getElementById(id);
     if (el) el.textContent = text;
   };
- setText("hero-title", t.heroTitle);
- setText("btn-find-schemes", t.findSchemes);
- setText("btn-watch-demo", t.watchDemo);
- setText("hero-subtitle", t.heroSubtitle);
- setText("step1-title", t.step1Title);
- setText("step2-title", t.step2Title);
- setText("step3-title", t.step3Title);
 
- setText("form-title", t.formTitle);
- setText("form-subtitle", t.formSubtitle);
-
+  // HERO SECTION
   setText("hero-title", t.heroTitle);
   setText("hero-subtitle", t.heroSubtitle);
+  setText("btn-find-schemes", t.findSchemes);
+  setText("btn-watch-demo", t.watchDemo);
+
+  // FORM SECTION
+  setText("form-title", t.formTitle);
+  setText("form-subtitle", t.formSubtitle);
+
+  // FORM LABELS & STEPS
+  setText("step1-title", t.step1Title);
+  setText("step2-title", t.step2Title);
+  setText("step3-title", t.step3Title);
+
   setText("label-fullName", t.fullName);
   setText("label-gender", t.gender);
   setText("label-state", t.state);
   setText("label-occupation", t.occupation);
   setText("label-income", t.income);
-  setText("btn-next", t.nextStep);
+  setText("label-category", t.socialCategory);
+  setText("label-disablity", t.disability);
   setText("label-education", t.education);
-setText("opt-education-default", t.selectEducation);
+  setText("label-area", t.area);
+  setText("label-intrest", t.interests);
 
-setText("label-area", t.area);
-setText("opt-area-default", t.selectArea);
+  // FORM PLACEHOLDERS
+  setText("opt-education-default", t.selectEducation);
+  setText("opt-area-default", t.selectArea);
 
-setText("label-interests", t.interests);
+  // INTEREST CATEGORIES
+  setText("int-education", t.intEducation);
+  setText("int-healthcare", t.intHealthcare);
+  setText("int-housing", t.intHousing);
+  setText("int-agriculture", t.intAgriculture);
+  setText("int-business", t.intBusiness);
+  setText("int-women", t.intWomen);
+  setText("int-skill", t.intSkill);
+  setText("int-pension", t.intPension);
 
-setText("int-education", t.intEducation);
-setText("int-healthcare", t.intHealthcare);
-setText("int-housing", t.intHousing);
-setText("int-agriculture", t.intAgriculture);
-setText("int-business", t.intBusiness);
-setText("int-women", t.intWomen);
-setText("int-skill", t.intSkill);
-setText("int-pension", t.intPension);
+  // BUTTONS
+  setText("btn-next", t.nextStep);
+  setText("btn-previous", t.previous);
+  setText("btn-submit", t.submit);
+  setText("re-analyze-btn", t.reAnalyze);
 
-setText("btn-previous", t.previous);
-setText("btn-submit", t.submit);
+  // RESULTS SECTION
+  setText("results-subtitle", t.resultsSubtitle);
+  setText("summary-text", t.resultsSubtitle);
+
+  // UPDATE PLACEHOLDERS FOR INPUTS
+  const schemeSearch = document.getElementById("scheme-search");
+  if (schemeSearch) schemeSearch.placeholder = t.searchPlaceholder;
+
+  // UPDATE FILTER PILLS (if they need translations)
+  const filterPills = document.querySelectorAll(".filter-pill");
+  const filterLabels = [t.filterAll, t.filterEducation, t.filterHealthcare, t.filterHousing, t.filterAgriculture, t.filterBusiness, t.filterWomen, t.filterPension, t.filterSkills];
+  filterPills.forEach((pill, i) => {
+    if (filterLabels[i]) pill.textContent = filterLabels[i];
+  });
+
+  // AI SECTION
+  setText("ai-name", t.aiName);
+  setText("ai-status", t.aiStatus);
+
+  // ANALYTICS SECTION
+  setText("stat-total-label", t.totalSchemes);
+  setText("stat-high-label", t.highMatch);
+  setText("stat-benefits-label", t.potentialBenefits);
+  setText("stat-categories-label", t.categories);
 }
 window.addEventListener("DOMContentLoaded", () => {
   const savedLang =

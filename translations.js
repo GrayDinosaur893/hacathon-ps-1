@@ -64,11 +64,36 @@ const TRANSLATIONS = {
 
     previous: "Previous",
     submit: "Discover Schemes",
+    reAnalyze: "Re-Analyze Profile",
     aiName: "AI Assistant",
     aiStatus: "Model Active",
+    findSchemes: "Find My Schemes",
+    watchDemo: "Watch Demo",
+    selectEducation: "Select education level",
+    selectArea: "Select area type",
+    searchPlaceholder: "Search schemes...",
+    filterAll: "All",
+    filterEducation: "🎓 Education",
+    filterHealthcare: "🏥 Healthcare",
+    filterHousing: "🏠 Housing",
+    filterAgriculture: "🌾 Agriculture",
+    filterBusiness: "💼 Business",
+    filterWomen: "👩 Women",
+    filterPension: "🛡️ Pension",
+    filterSkills: "🛠️ Skills",
+    totalSchemes: "Total Schemes",
+    highMatch: "High Match",
+    potentialBenefits: "Potential Benefits",
+    categories: "Categories",
+    socialCategory: "Social Category",
+    disability: "Disability Status",
+    education: "Education",
+    area: "Area of Residence",
+    interests: "Interests (Select all that apply)",
+    resultsSubtitle: "Based on your profile, here are the schemes you're eligible for.",
 
     aiWarning:
-      "⚠ Please fill in all required fields before proceeding.",
+      "⚠️ Please fill in all required fields before proceeding.",
 
     aiAlmost:
       "🎯 Almost there! Additional details will help fine-tune the AI matching algorithm for better results.",
@@ -80,54 +105,31 @@ const TRANSLATIONS = {
 
   // 🇮🇳 Hindi
   hi: {
-    // HERO
     heroTitle: "सरकारी योजनाएँ खोजें",
-    heroSubtitle:
-      "हमारा AI आपकी प्रोफ़ाइल का विश्लेषण करके आपके लिए सर्वोत्तम योजनाएँ ढूँढता है।",
-
-    // FORM SECTION
+    heroSubtitle: "हमारा AI आपकी प्रोफ़ाइल का विश्लेषण करके आपके लिए सर्वोत्तम योजनाएँ ढूँढता है।",
+    findSchemes: "मेरी योजनाएँ खोजें",
+    watchDemo: "डेमो देखें",
     formTitle: "अपने बारे में बताइए",
-    formSubtitle:
-      "अपनी जानकारी भरें और हमारा AI आपके लिए सबसे उपयुक्त योजनाएँ खोजेगा।",
-
-    // LABELS
+    formSubtitle: "अपनी जानकारी भरें और हमारा AI आपके लिए सबसे उपयुक्त योजनाएँ खोजेगा।",
     fullName: "पूरा नाम",
     gender: "लिंग",
     state: "राज्य",
     occupation: "पेशा",
-    income: "वार्षिक आय",
-
-    // BUTTONS
-    nextStep: "अगला चरण",
-    previousStep: "पिछला चरण",
-    submit: "योजनाएँ खोजें",
-
-    // RESULTS
-    resultsTitle: "आपके लिए सुझाई गई योजनाएँ",
-    resultsSubtitle:
-      "आपकी प्रोफ़ाइल के आधार पर ये योजनाएँ आपके लिए उपयुक्त हैं।",
-
-    // AI MESSAGES
-    aiStep1:
-      "📝 बढ़िया शुरुआत! आपकी जानकारी योजनाएँ ढूँढने में मदद करेगी।",
-    aiStep2:
-      "💰 आय और रोजगार पात्रता के लिए महत्वपूर्ण हैं।",
-    aiStep3:
-      "🎯 बस हो गया! मैं आपके लिए योजनाएँ खोज रहा हूँ।",
-      findSchemes: "मेरी योजनाएँ खोजें",
-      watchDemo: "डेमो देखें",
-      step1Title: "व्यक्तिगत जानकारी",
-      step2Title: "रोजगार और आय",
-      step3Title: "अतिरिक्त विवरण",
-      socialCategory: "सामाजिक वर्ग",
+    income: "वार्षिक आय (₹)",
+    socialCategory: "सामाजिक वर्ग",
+    disability: "विकलांगता स्थिति",
     education: "शिक्षा",
-    selectEducation: "शिक्षा स्तर चुनें",
-
     area: "निवास क्षेत्र",
-    selectArea: "क्षेत्र चुनें",
-
     interests: "रुचियाँ (सभी लागू विकल्प चुनें)",
-
+    selectEducation: "शिक्षा स्तर चुनें",
+    selectArea: "क्षेत्र चुनें",
+    nextStep: "अगला चरण",
+    previous: "पिछला चरण",
+    submit: "योजनाएँ खोजें",
+    reAnalyze: "प्रोफ़ाइल फिर से विश्लेषण करें",
+    step1Title: "व्यक्तिगत जानकारी",
+    step2Title: "रोजगार और आय",
+    step3Title: "अतिरिक्त विवरण",
     intEducation: "शिक्षा एवं छात्रवृत्ति",
     intHealthcare: "स्वास्थ्य सेवा",
     intHousing: "आवास",
@@ -136,96 +138,82 @@ const TRANSLATIONS = {
     intWomen: "महिला सशक्तिकरण",
     intSkill: "कौशल विकास",
     intPension: "पेंशन एवं बीमा",
-
-    previous: "पिछला चरण",
-    submit: "योजनाएँ खोजें",
     aiName: "AI सहायक",
-   aiStatus: "मॉडल सक्रिय",
-
-    aiWarning:
-      "⚠ कृपया आगे बढ़ने से पहले सभी आवश्यक जानकारी भरें।",
-
-    aiAlmost:
-      "🎯 लगभग हो गया! अतिरिक्त जानकारी बेहतर परिणाम देने में मदद करेगी।",
-
+    aiStatus: "मॉडल सक्रिय",
+    resultsSubtitle: "आपकी प्रोफ़ाइल के आधार पर, ये योजनाएँ आपके लिए उपयुक्त हैं।",
+    searchPlaceholder: "योजनाएँ खोजें...",
+    filterAll: "सभी",
+    filterEducation: "🎓 शिक्षा",
+    filterHealthcare: "🏥 स्वास्थ्य",
+    filterHousing: "🏠 आवास",
+    filterAgriculture: "🌾 कृषि",
+    filterBusiness: "💼 व्यवसाय",
+    filterWomen: "👩 महिलाएँ",
+    filterPension: "🛡️ पेंशन",
+    filterSkills: "🛠️ कौशल",
+    totalSchemes: "कुल योजनाएँ",
+    highMatch: "उच्च मिल",
+    potentialBenefits: "संभावित लाभ",
+    categories: "श्रेणियाँ",
     accuracy: "सटीकता",
     latency: "प्रतिक्रिया समय",
     schemes: "योजनाएँ",
-
   },
 
   // 🟣 Marathi
   mr: {
-    // HERO
     heroTitle: "शासकीय योजना शोधा",
-    heroSubtitle:
-      "आमचा AI तुमच्या प्रोफाइलनुसार सर्वोत्तम योजना शोधतो.",
-
-    // FORM SECTION
+    heroSubtitle: "आमचा AI तुमच्या प्रोफाइलनुसार सर्वोत्तम योजना शोधतो.",
+    findSchemes: "माझ्या योजना शोधा",
+    watchDemo: "डेमो पहा",
     formTitle: "तुमच्याबद्दल सांगा",
-    formSubtitle:
-      "तुमची माहिती भरा आणि आमचा AI तुमच्यासाठी योग्य योजना शोधेल.",
-
-    // LABELS
+    formSubtitle: "तुमची माहिती भरा आणि आमचा AI तुम्हाला उपयुक्त योजना शोधेल.",
     fullName: "पूर्ण नाव",
     gender: "लिंग",
     state: "राज्य",
     occupation: "व्यवसाय",
-    income: "वार्षिक उत्पन्न",
-
-    // BUTTONS
+    income: "वार्षिक उत्पन्न (₹)",
+    socialCategory: "सामाजिक गट",
+    disability: "अक्षमता स्थिती",
+    education: "शिक्षण",
+    area: "निवास क्षेत्र",
+    interests: "स्वारस्ये (लागू असलेले निवडा)",
+    selectEducation: "शिक्षण स्तर निवडा",
+    selectArea: "क्षेत्र निवडा",
     nextStep: "पुढील टप्पा",
-    previousStep: "मागील टप्पा",
+    previous: "मागील टप्पा",
     submit: "योजना शोधा",
-
-    // RESULTS
-    resultsTitle: "तुमच्यासाठी शिफारस केलेल्या योजना",
-    resultsSubtitle:
-      "तुमच्या प्रोफाइलनुसार या योजना तुम्हाला लागू होतात.",
-      findSchemes: "माझ्या योजना शोधा",
-      watchDemo: "डेमो पहा",
-
-    // AI MESSAGES
-    aiStep1:
-      "📝 छान सुरुवात! तुमची माहिती उपयुक्त आहे.",
-    aiStep2:
-      "💰 उत्पन्न व रोजगार महत्त्वाचे आहेत.",
-    aiStep3:
-      "🎯 पूर्ण झाले! योजना शोधत आहे.",
-      step1Title: "वैयक्तिक माहिती",
-      step2Title: "रोजगार आणि उत्पन्न",
-      step3Title: "अतिरिक्त तपशील",
-      socialCategory: "सामाजिक गट",
-      education: "शिक्षण",
-      selectEducation: "शिक्षण स्तर निवडा",
-
-      area: "निवास क्षेत्र",
-      selectArea: "क्षेत्र निवडा",
-
-      interests: "स्वारस्ये (लागू असलेले निवडा)",
-
-      intEducation: "शिक्षण व शिष्यवृत्ती",
-      intHealthcare: "आरोग्य सेवा",
-      intHousing: "गृहनिर्माण",
-      intAgriculture: "शेती",
-      intBusiness: "व्यवसाय व स्टार्टअप",
-      intWomen: "महिला सक्षमीकरण",
-      intSkill: "कौशल्य विकास",
-      intPension: "पेन्शन व विमा",
-
-      previous: "मागील टप्पा",
-      submit: "योजना शोधा",aiName: "AI सहाय्यक",
-      aiStatus: "मॉडेल सक्रिय",
-
-      aiWarning:
-        "⚠ कृपया पुढे जाण्यापूर्वी सर्व आवश्यक माहिती भरा.",
-
-      aiAlmost:
-        "🎯 जवळपास पूर्ण! अतिरिक्त माहिती अधिक अचूक परिणाम देईल.",
-
-      accuracy: "अचूकता",
-      latency: "विलंब",
-      schemes: "योजना",
-                  
+    reAnalyze: "प्रोफाइल पुन्हा विश्लेषण करा",
+    step1Title: "वैयक्तिक माहिती",
+    step2Title: "रोजगार आणि उत्पन्न",
+    step3Title: "अतिरिक्त तपशील",
+    intEducation: "शिक्षण व शिष्यवृत्ती",
+    intHealthcare: "आरोग्य सेवा",
+    intHousing: "गृहनिर्माण",
+    intAgriculture: "शेती",
+    intBusiness: "व्यवसाय व स्टार्टअप",
+    intWomen: "महिला सक्षमीकरण",
+    intSkill: "कौशल्य विकास",
+    intPension: "पेन्शन व विमा",
+    aiName: "AI सहाय्यक",
+    aiStatus: "मॉडेल सक्रिय",
+    resultsSubtitle: "तुमच्या प्रोफाइलनुसार या योजना तुम्हाला लागू होतात.",
+    searchPlaceholder: "योजना शोधा...",
+    filterAll: "सर्व",
+    filterEducation: "🎓 शिक्षण",
+    filterHealthcare: "🏥 आरोग्य",
+    filterHousing: "🏠 गृहनिर्माण",
+    filterAgriculture: "🌾 शेती",
+    filterBusiness: "💼 व्यवसाय",
+    filterWomen: "👩 महिलाएं",
+    filterPension: "🛡️ पेन्शन",
+    filterSkills: "🛠️ कौशल्य",
+    totalSchemes: "एकूण योजना",
+    highMatch: "उच्च जुळणी",
+    potentialBenefits: "संभाव्य लाभ",
+    categories: "श्रेणी",
+    accuracy: "अचूकता",
+    latency: "विलंब",
+    schemes: "योजना",
   },
 };
